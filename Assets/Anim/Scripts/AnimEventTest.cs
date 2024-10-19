@@ -10,6 +10,8 @@ public class AnimEventTest : MonoBehaviour
     public GameObject DestoryObj;
     [Header("变化时间区间")]
     public float AllTime;
+    private bool ChangeState;
+
     public void Awake()
     {
         RotateEffect = GameObject.Find("Effect_Rotate_1");
@@ -35,6 +37,7 @@ public class AnimEventTest : MonoBehaviour
             Debug.Log("NOT FIND!");
         }
     }
+
     private SpriteRenderer sprite;
     private bool isFade = false;
     
@@ -77,6 +80,10 @@ public class AnimEventTest : MonoBehaviour
     {
         Destroy(DestoryObj);
 
+    }
+    public void DisableItem()
+    {
+        DestoryObj.SetActive(false);
     }
 
 }
