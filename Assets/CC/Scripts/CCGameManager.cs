@@ -92,47 +92,47 @@ public class CCGameManager : MonoBehaviour
         GUIStyle style = new GUIStyle();
         style.normal.textColor = Color.white;
         style.normal.background = null;
-        style.fontSize = 50;
+        style.fontSize = 35;
 
         //大字体初始化
         GUIStyle bigStyle = new GUIStyle();
         bigStyle.normal.textColor = Color.white;
         bigStyle.normal.background = null;
-        bigStyle.fontSize = 100;
+        bigStyle.fontSize = 80;
 
         //Pos
         //重置按钮位置
-        Rect btnPos = new Rect(1200, 50, 200, 50);
-        Rect titlePos = new Rect(800, 50, 0, 0);
-        Rect postPos = new Rect(500, 50, 200, 50);
+        Rect btnPos = new Rect(1300, 60, 200, 50);
+        Rect titlePos = new Rect(740, 50, 0, 0);
+        Rect postPos = new Rect(300, 50, 200, 50);
         Rect WLpostPos = new Rect(400, 540, 200, 50);
-        Rect p1Pos = new Rect(800, 860, 100, 50);
-        Rect p1Pos_ = new Rect(800, 920, 100, 50);
-        Rect p2Pos = new Rect(1020, 860, 100, 50);
-        Rect p2Pos_ = new Rect(1020, 920, 100, 50);
+        Rect p1Pos = new Rect(800, 860, 150, 50);
+        Rect p1Pos_ = new Rect(800, 920, 150, 50);
+        Rect p2Pos = new Rect(1020, 860, 150, 50);
+        Rect p2Pos_ = new Rect(1020, 920, 150, 50);
 
 
         //加载游戏状态
         int state = checkState();
         switch (state) {
             case 0:
-                GUI.Label(postPos, " 玩家" + (turn + 1) + "的回合", style);
+                GUI.Label(postPos, " Player " + (turn + 1) + " Round", style);
                 break;
             case 1:
-                GUI.Label(WLpostPos, "玩家1获胜", style);
+                GUI.Label(WLpostPos, "[ Player1  WIN!! ]", style);
 
                 SettlementPlay(true);
                 state = 0;
 
                 break;
             case 2:
-                GUI.Label(WLpostPos, "玩家2获胜", style);
+                GUI.Label(WLpostPos, "[ Player2  WIN!! ]", style);
 
                 SettlementPlay(true);
                 state = 0;
                 break;
             case 3:
-                GUI.Label(WLpostPos, "平局", style);
+                GUI.Label(WLpostPos, "[ Draw Game... ]", style);
 
                 SettlementPlay(false);
                 state = 0;
@@ -145,29 +145,29 @@ public class CCGameManager : MonoBehaviour
         }
 
         //加载标题
-        GUI.Label(titlePos, "井字棋", bigStyle);
+        GUI.Label(titlePos, "Tic-Tac-Toe", bigStyle);
 
         //加载重置按钮
-        if (GUI.Button(btnPos, "重置"))
+        if (GUI.Button(btnPos, "Reset"))
             Init();
 
         //加载玩家1选择先手与后手的选项及实现功能
-        if (GUI.Button(p1Pos, "玩家1:先手")) {
+        if (GUI.Button(p1Pos, "Player 1: Play First")) {
             initTurn = 0;
             Init();
         }
-        if (GUI.Button(p1Pos_, "玩家1:后手")) {
+        if (GUI.Button(p1Pos_, "Player 1: Play Next")) {
             initTurn = 1;
             Init();
         }
 
         //加载选择与人或与AI对战模式的选项及实现其功能
-        if (GUI.Button(p2Pos, "玩家2:玩家")) {
+        if (GUI.Button(p2Pos, "Player 2: Player")) {
 
             isSingle = true;
             Init();
         }
-        if (GUI.Button(p2Pos_, "玩家2:AI")) {
+        if (GUI.Button(p2Pos_, "Player 2:  AI")) {
             isSingle = false;
             Init();
         }
